@@ -2,6 +2,8 @@
 
 Project for creating a Full-Stack web-application for HBO-ICT quartile 1.4
 
+# FRONTEND
+
 ## Application idea
 
 A Jedi Archive web application that uses CRUD (Create, Read, Update, Delete) operations and REST (Representational State
