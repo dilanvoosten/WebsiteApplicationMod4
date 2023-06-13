@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome to the Jedi Archives</title>
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 
 
@@ -10,18 +11,18 @@
 <div class="wrapper">
 
     <div class="login">
-        <p class="welcomeText">Welcome to the Jedi <br> Archives<br><br>
-            Please login below to <br> enter</p>
+        <p class="welcomeText">Welcome to the Jedi Archives<br><br>
+            Please login below to enter</p>
 
 
         <form class="loginForm">
             <label for="username">Username: </label>
-            <input type="text" id="username" name="username">
-
+            <input type="text" id="username" name="username" placeholder="Username">
+            <br><br>
             <label for="password">Password: </label>
-            <input type="text" id="password" name="password">
-
-            <input type="submit" value="Login">
+            <input type="text" id="password" name="password" placeholder="Password">
+            <br><br>
+            <button type="submit" id="loginButton">Login</button>
         </form>
 
         <p class="signUp">Don't have an account? <br>
@@ -29,7 +30,6 @@
     </div>
 
 </div>
-<footer></footer>
 
 </body>
 </html>

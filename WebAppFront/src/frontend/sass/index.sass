@@ -7,3 +7,56 @@ $signUpLink: #54A0FF
 body
   background-color: $pageBackground
 
+  .wrapper
+    height: 100vh
+    width: 100vw
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .login
+      background-color: $loginBackground
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      align-items: center
+      border-radius: 20px
+      width: 25vw
+      height: 55.5vh
+
+      .welcomeText
+        align-self: center
+
+      .loginForm
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+
+        input
+          border: none
+
+        button
+          width: 5vw
+          height: 3vh
+          border: 0
+          border-radius: 100px
+          background-color: $signUpLink
+          color: white
+          font-weight: bold
+          transition: all 0.5s
+          -webkit-transition: all 0.5s
+
+        button:hover
+          background-color: #6fc5ff
+          box-shadow: 0 0 20px #6fc5ff50
+          transform: scale(1.1)
+
+        button:active
+          background-color: #3d94cf
+          transition: all 0.25s
+          -webkit-transition: all 0.25s
+          box-shadow: none
+          transform: scale(0.98)
+
+
