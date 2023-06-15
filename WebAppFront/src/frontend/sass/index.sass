@@ -1,11 +1,11 @@
-$backgroundImage: "WebAppFront/resources/archives-background.png"
-$pageBackground: #222F3E
-$loginBackground: #C8D6E5
-$textField: #D9D9D9
-$signUpLink: #54A0FF
+@use "variables" as v
+
+// TODO: fix path/reference to background image
+$backgroundImage: "../../resources/archives-background.png"
 
 body
-  background-color: $pageBackground
+  background: v.$pageBackground
+  // url($backgroundImage)
 
   .wrapper
     height: 100vh
@@ -15,7 +15,7 @@ body
     justify-content: center
 
     .login
-      background-color: $loginBackground
+      background-color: v.$loginBackground
       display: flex
       flex-direction: column
       justify-content: space-between
@@ -41,19 +41,19 @@ body
           height: 3vh
           border: 0
           border-radius: 100px
-          background-color: $signUpLink
+          background-color: v.$signUpLink
           color: white
           font-weight: bold
           transition: all 0.5s
           -webkit-transition: all 0.5s
 
         button:hover
-          background-color: #6fc5ff
-          box-shadow: 0 0 20px #6fc5ff50
+          background-color: v.$buttonHover
+          box-shadow: 0 0 20px v.$buttonHoverOpacity
           transform: scale(1.1)
 
         button:active
-          background-color: #3d94cf
+          background-color: v.$buttonActive
           transition: all 0.25s
           -webkit-transition: all 0.25s
           box-shadow: none
