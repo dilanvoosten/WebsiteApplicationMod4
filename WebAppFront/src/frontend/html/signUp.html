@@ -3,8 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/signUp.css">
 </head>
+
 <body>
+<div class="wrapper">
+
+    <div class="signUp">
+        <p class="welcomeText">Welcome to the Jedi Archives <br><br>
+            Please sign up below to create an account</p>
+
+        <form class="signUpForm">
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <br><br>
+            <label for="password">Password: </label>
+            <input type="text" id="password" name="password" placeholder="Password">
+            <br><br>
+            <label for="role">Choose your role: </label>
+            <select id="role" name="role" size="1">
+                <option value="Padawan">Padawan</option>
+                <option value="Jedi Knight">Jedi Knight</option>
+                <option value="Jedi Master">Jedi Master</option>
+            </select>
+            <br><br>
+            <button type="submit" id="signUpButton">Sign Up</button>
+        </form>
+
+        <p class="login">Already an account? <br>
+            <a href="index.html"><u>Log In</u></a></p>
+    </div>
+
+</div>
 
 </body>
 </html>
