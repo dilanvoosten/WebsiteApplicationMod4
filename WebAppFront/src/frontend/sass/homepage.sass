@@ -1,0 +1,81 @@
+@use 'variables' as v
+
+body
+  background: v.$pageBackground
+  height: 98vh
+  width: 95vw
+
+  header
+    position: absolute
+    top: 0
+    left: 0
+    height: 10vh
+    width: 100vw
+    background-color: v.$topBottomBackground
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+
+    .links
+      height: 8vh
+      width: 35vw
+      left: 1vw
+      display: flex
+      align-items: center
+      background-color: v.$pageItemsBackground
+
+    .logo
+      height: 10vh
+      width: 15.625vw
+      display: flex
+      align-items: center
+      justify-content: center
+      background-color: v.$pageItemsBackground
+
+    .searchBar
+      height: 6vh
+      background-color: v.$pageItemsBackground
+      display: flex
+      flex-direction: row
+      justify-content: space-around
+      align-items: center
+
+      input
+        border: none
+
+    button
+      width: 5vw
+      height: 3vh
+      border: 0
+      border-radius: 100px
+      background-color: v.$signUpLink
+      color: white
+      font-weight: bold
+      transition: all 0.5s
+      -webkit-transition: all 0.5s
+
+      button:hover
+        background-color: v.$buttonHover
+        box-shadow: 0 0 20px v.$buttonHoverOpacity
+        transform: scale(1.1)
+
+      button:active
+        background-color: v.$buttonActive
+        transition: all 0.25s
+        -webkit-transition: all 0.25s
+        box-shadow: none
+        transform: scale(0.98)
+
+
+  .wrapper
+    position: relative
+    top: 10vh
+
+  footer
+    position: absolute
+    bottom: 0
+    left: 0
+    height: 15vh
+    width: 100vw
+    background-color: v.$topBottomBackground

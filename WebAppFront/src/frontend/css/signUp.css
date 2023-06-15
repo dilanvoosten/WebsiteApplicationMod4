@@ -1,7 +1,6 @@
 body {
     background: #222F3E;
 }
-
 body .wrapper {
     height: 100vh;
     width: 100vw;
@@ -9,7 +8,6 @@ body .wrapper {
     align-items: center;
     justify-content: center;
 }
-
 body .wrapper .signUp {
     background-color: #C8D6E5;
     display: flex;
@@ -20,22 +18,18 @@ body .wrapper .signUp {
     width: 25vw;
     height: 55.5vh;
 }
-
 body .wrapper .signUp .welcomeText {
     align-self: center;
 }
-
 body .wrapper .signUp .signUpForm {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-
 body .wrapper .signUp .signUpForm input {
     border: none;
 }
-
 body .wrapper .signUp .signUpForm button {
     width: 5vw;
     height: 3vh;
@@ -47,13 +41,11 @@ body .wrapper .signUp .signUpForm button {
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
 }
-
 body .wrapper .signUp .signUpForm button:hover {
     background-color: #6fc5ff;
     box-shadow: 0 0 20px rgba(111, 197, 255, 0.3137254902);
     transform: scale(1.1);
 }
-
 body .wrapper .signUp .signUpForm button:active {
     background-color: #3d94cf;
     transition: all 0.25s;
