@@ -6,6 +6,8 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="../css/homepage.css">
     <link rel="icon" type="image/png" href="../../../resources/logo.png">
+    <script src="https://kit.fontawesome.com/2a6128e7b4.js" crossorigin="anonymous"></script>
+    <script src="../javascript/homepage.js"></script>
 </head>
 <body>
 
@@ -14,17 +16,44 @@
         Page links
     </div>
 
+    <!--TODO: make logo clickable and link back to homepage -->
     <div class="logo">
         <img src="../../../resources/logo.png" alt="">
     </div>
 
     <div class="searchBar">
-        <label for="search"><i class="fa-solid fa-magnifying-glass fa-rotate-90"></i></label>
         <input type="text" id="search" name="search">
+        <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
     </div>
 
 
-    <button type="button" id="accountBtn">Account</button>
+    <button type="button" onclick="showDialog()" class="accountBtn">Account</button>
+
+    <dialog class="accountPopUp" id="accountPopUp">
+
+        <button type="button" onclick="closeDialog()" id="closeDialog"><i class="fa-solid fa-xmark"></i></button>
+
+        <p> Change your credentials here</p>
+        <form>
+            <label for="updateUsername"> exampleUsername</label>
+            <!-- insert username from current session here-->
+            <div class="username">
+                <input type="text" id="updateUsername" name="updateUsername" placeholder="New Username...">
+                <button type="submit" id="submitUsername">Submit</button>
+            </div>
+
+
+            <label for="updatePassword">*******</label>
+            <!-- insert '*' with length of password from current session here-->
+            <div class="password">
+                <input type="text" id="updatePassword" name="updatePassword" placeholder="New Password...">
+                <button type="submit" id="submitPassword">Submit</button>
+            </div>
+            <button type="submit" id="submitUserPass">Submit both</button>
+        </form>
+
+        <button id="logoutBtn">Log Out</button>
+    </dialog>
 
 
 </header>
@@ -33,9 +62,7 @@
     main page
 </div>
 
-<footer>
 
-</footer>
 
 </body>
 </html>
