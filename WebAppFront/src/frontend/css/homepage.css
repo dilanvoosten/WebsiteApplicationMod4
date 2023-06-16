@@ -22,7 +22,6 @@ body header .links {
   align-items: center;
   background-color: #C8D6E5;
 }
-
 body header .logo {
     height: 10vh;
     width: 15.625vw;
@@ -31,12 +30,10 @@ body header .logo {
     justify-content: center;
     background-color: #C8D6E5;
 }
-
 body header .logo img {
-    height: 10vh;
+    height: 10.5vh;
     width: 15.625vw;
 }
-
 body header .searchBar {
     height: 6vh;
     width: 20vw;
@@ -63,14 +60,12 @@ body header button {
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
 }
-
 body header button:hover {
     background-color: #6fc5ff;
     box-shadow: 0 0 20px rgba(111, 197, 255, 0.3137254902);
     transform: scale(1.1);
     cursor: pointer;
 }
-
 body header button:active {
     background-color: #3d94cf;
     transition: all 0.25s;
@@ -79,7 +74,6 @@ body header button:active {
     transform: scale(0.98);
     cursor: pointer;
 }
-
 body header .accountPopUp {
     visibility: hidden;
     position: fixed;
@@ -96,14 +90,12 @@ body header .accountPopUp {
     color: white;
     padding: 0 0 1vh 0;
 }
-
 body header .accountPopUp #closeDialog {
     background-color: #ee5253;
     color: black;
     align-self: flex-end;
     border-radius: 0 20px 0 0;
 }
-
 body header .accountPopUp form {
     height: 40vh;
     width: 20vw;
@@ -112,21 +104,18 @@ body header .accountPopUp form {
     justify-content: space-evenly;
     align-items: center;
 }
-
 body header .accountPopUp form .username {
     width: 15vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-
 body header .accountPopUp form .password {
     width: 15vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-
 body .wrapper {
     position: relative;
     top: 10vh;
