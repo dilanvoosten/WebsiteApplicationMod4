@@ -125,3 +125,73 @@ body
     position: relative
     top: 10vh
 
+    .newArticle
+      display: flex
+      flex-direction: column
+      justify-content: flex-start
+      gap: 4vh
+
+      #standard
+        display: flex
+        flex-direction: column
+        gap: 2vh
+
+        #articleTitle
+          width: 20vw
+          background-color: v.$pageItemsBackground
+          border-radius: 5px
+
+        #articleText
+          width: 60vw
+          height: 20vh
+          background-color: v.$pageItemsBackground
+          border-radius: 10px
+
+
+      #newSections
+        display: flex
+        flex-direction: column
+        gap: 2vh
+
+        #articleHeader
+          width: 20vw
+          background-color: v.$pageItemsBackground
+          border-radius: 5px
+
+        #articleSection
+          width: 60vw
+          height: 20vh
+          background-color: v.$pageItemsBackground
+          border-radius: 10px
+
+
+      #buttons
+        display: flex
+        flex-direction: row
+        justify-content: space-evenly
+        align-items: center
+
+        button
+          height: 3vh
+          border: 0
+          border-radius: 150px
+          background-color: v.$signUpLink
+          color: white
+          font-weight: bold
+          transition: all 0.5s
+          -webkit-transition: all 0.5s
+
+        button:hover
+          background-color: v.$buttonHover
+          box-shadow: 0 0 20px v.$buttonHoverOpacity
+          transform: scale(1.1)
+          cursor: pointer
+
+        button:active
+          background-color: v.$buttonActive
+          transition: all 0.25s
+          -webkit-transition: all 0.25s
+          box-shadow: none
+          transform: scale(0.98)
+          cursor: pointer
+

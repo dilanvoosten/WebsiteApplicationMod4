@@ -111,14 +111,94 @@ body header .accountPopUp form .username {
   justify-content: space-between;
 }
 body header .accountPopUp form .password {
-  width: 15vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    width: 15vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
 body .wrapper {
-  position: relative;
-  top: 10vh;
+    position: relative;
+    top: 10vh;
+}
+
+body .wrapper .newArticle {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4vh;
+}
+
+body .wrapper .newArticle #standard {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+body .wrapper .newArticle #standard #articleTitle {
+    width: 20vw;
+    background-color: #C8D6E5;
+    border-radius: 5px;
+}
+
+body .wrapper .newArticle #standard #articleText {
+    width: 60vw;
+    height: 20vh;
+    background-color: #C8D6E5;
+    border-radius: 10px;
+}
+
+body .wrapper .newArticle #newSections {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+body .wrapper .newArticle #newSections #articleHeader {
+    width: 20vw;
+    background-color: #C8D6E5;
+    border-radius: 5px;
+}
+
+body .wrapper .newArticle #newSections #articleSection {
+    width: 60vw;
+    height: 20vh;
+    background-color: #C8D6E5;
+    border-radius: 10px;
+}
+
+body .wrapper .newArticle #buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+body .wrapper .newArticle #buttons button {
+    height: 3vh;
+    border: 0;
+    border-radius: 150px;
+    background-color: #54A0FF;
+    color: white;
+    font-weight: bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+body .wrapper .newArticle #buttons button:hover {
+    background-color: #6fc5ff;
+    box-shadow: 0 0 20px rgba(111, 197, 255, 0.3137254902);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+body .wrapper .newArticle #buttons button:active {
+    background-color: #3d94cf;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+    cursor: pointer;
 }
 
 /*# sourceMappingURL=addArticle.css.map */

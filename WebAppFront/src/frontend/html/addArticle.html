@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="../css/addArticle.css">
     <link rel="icon" type="image/png" href="../../../resources/archive-logo.png">
     <script src="https://kit.fontawesome.com/2a6128e7b4.js" crossorigin="anonymous"></script>
+    <script src="../javascript/addArticle.js"></script>
 </head>
 <body>
 
 <header>
     <div class="links">
-        Page links
+        Tags
     </div>
 
     <div class="logo">
@@ -35,7 +36,7 @@
         <p> Change your credentials here</p>
         <form>
             <label for="updateUsername"> exampleUsername</label>
-            <!-- insert username from current session here-->
+            <!--TODO insert username from current session here-->
             <div class="username">
                 <input type="text" id="updateUsername" name="updateUsername" placeholder="New Username...">
                 <button type="submit" id="submitUsername">Submit</button>
@@ -43,7 +44,7 @@
 
 
             <label for="updatePassword">*******</label>
-            <!-- insert '*' with length of password from current session here-->
+            <!--TODO insert '*' with length of password from current session here-->
             <div class="password">
                 <input type="text" id="updatePassword" name="updatePassword" placeholder="New Password...">
                 <button type="submit" id="submitPassword">Submit</button>
@@ -58,11 +59,20 @@
 <div class="wrapper">
 
     <form class="newArticle">
-        <label for="articleTitle"></label>
-        <input type="text" id="articleTitle" placeholder="Name your article here">
+        <div id="standard">
+            <label for="articleTitle"></label>
+            <input type="text" id="articleTitle" placeholder="Name your article here">
 
-        <label for="articleText"></label>
-        <input type="text" id="articleText" placeholder="Write your text here">
+            <label for="articleText"></label>
+            <textarea id="articleText" name="articleText" placeholder="Write your text here"></textarea>
+        </div>
+
+        <div id="newSections"><!-- Used for creating new sections--></div>
+
+        <div id="buttons">
+            <button type="button" onclick="generateSection()">Add section</button>
+            <button type="submit" id="submitArticle">Make new article</button>
+        </div>
     </form>
 
 </div>
