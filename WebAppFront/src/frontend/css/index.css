@@ -1,5 +1,8 @@
 body {
-  background: #222F3E;
+  background-image: url("../../../resources/archives-background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 body .wrapper {
   height: 100vh;
