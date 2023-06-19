@@ -43,3 +43,51 @@ changeCred.addEventListener("submit", (e) => {
          - Password: ${newPassword.value} :: ${confirmPassword.value}`);
     }
 });
+
+// boolean and event listener for checking if section has been added
+let sectionAdded = false;
+document.getElementById("addSection").addEventListener("click", () => {
+    sectionAdded = true;
+});
+
+// handle the data for making a new article
+let newArticle = document.getElementById("newArticle");
+
+newArticle.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // standard input fields
+    let articleTitle = document.getElementById("articleTitle");
+    let articleText = document.getElementById("articleText");
+    // section input fields
+    let articleHeader = document.getElementById("articleHeader");
+    let articleSection = document.getElementById("articleSection");
+
+    // check if title is left empty
+    if (articleTitle.value === "" || articleText.value === "") {
+        alert(`\n Invalid input for making a new article! \n Title and text have to be given`);
+        // check if section has been added, if so, check if fields aren't left empty
+    } else {
+        if (sectionAdded) {
+            // check for empty fields
+            if (articleHeader.value === "" || articleSection.value === "") {
+                alert(`\n Invalid input for making a new article! \n Header and corresponding text have to be given.`);
+            } else {
+                console.log(`Title: ${articleTitle.value} \n
+            Text: ${articleText.value} \n
+            Header: ${articleHeader.value} \n
+            Section text: ${articleSection.value}`);
+            }
+        } else {
+            // TODO: make this method useful for multiple extra sections
+            // set values of uncreated sections to empty string
+
+            // TODO: send data to backend
+            console.log(`Title: ${articleTitle.value} \n
+            Text: ${articleText.value}`);
+        }
+
+
+    }
+
+});

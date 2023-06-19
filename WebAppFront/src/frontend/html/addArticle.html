@@ -59,7 +59,7 @@
 
 <div class="wrapper">
 
-    <form class="newArticle">
+    <form class="newArticle" id="newArticle">
         <div id="standard">
             <label for="articleTitle"></label>
             <input type="text" id="articleTitle" placeholder="Name your article here">
@@ -71,7 +71,7 @@
         <div id="newSections"><!-- Used for creating new sections--></div>
 
         <div id="buttons">
-            <button type="button" onclick="generateSection()">Add section</button>
+            <button type="button" id="addSection" onclick="generateSection()">Add section</button>
             <button type="submit" id="submitArticle">Make new article</button>
         </div>
     </form>
