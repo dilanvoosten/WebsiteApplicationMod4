@@ -6,6 +6,7 @@
     <title>Sign Up</title>
     <link rel="stylesheet" href="../css/signUp.css">
     <link rel="icon" type="image/png" href="../../../resources/archive-logo.png">
+    <script defer src="../javascript/signUp.js"></script>
 </head>
 
 <body>
@@ -15,12 +16,12 @@
         <p class="welcomeText">Welcome to the Jedi Archives <br><br>
             Please sign up below to create an account</p>
 
-        <form class="signUpForm">
+        <form class="signUpForm" id="signUpForm">
             <label for="username">Username: </label>
             <input type="text" id="username" name="username" placeholder="Username">
             <br><br>
             <label for="password">Password: </label>
-            <input type="text" id="password" name="password" placeholder="Password">
+            <input type="password" id="password" name="password" placeholder="Password">
             <br><br>
             <label for="role">Choose your role: </label>
             <select id="role" name="role" size="1">
@@ -32,7 +33,7 @@
             <button type="submit" id="signUpButton">Sign Up</button>
         </form>
 
-        <p class="login">Already an account? <br>
+        <p class="login">Already have an account? <br>
             <a href="index.html"><u>Log In</u></a></p>
     </div>
 
