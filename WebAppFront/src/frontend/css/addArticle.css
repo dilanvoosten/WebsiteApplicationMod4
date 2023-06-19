@@ -75,21 +75,21 @@ body header button:active {
   cursor: pointer;
 }
 body header .accountPopUp {
-    visibility: hidden;
-    z-index: 10;
-    position: fixed;
-    top: 25vh;
-    height: 50vh;
-    width: 20vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border: 0;
-    border-radius: 20px;
-    background-color: #2E86DE;
-    color: white;
-    padding: 0 0 1vh 0;
+  visibility: hidden;
+  z-index: 10;
+  position: fixed;
+  top: 20vh;
+  height: 60vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 0;
+  border-radius: 20px;
+  background-color: #2E86DE;
+  color: white;
+  padding: 0 0 1vh 0;
 }
 body header .accountPopUp #closeDialog {
   background-color: #ee5253;
@@ -105,89 +105,102 @@ body header .accountPopUp form {
   justify-content: space-evenly;
   align-items: center;
 }
+
 body header .accountPopUp form .username {
   width: 15vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 body header .accountPopUp form .password {
-    width: 15vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  width: 15vw;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
 }
+
+body header .accountPopUp form #submitUserPass {
+  background-color: #10ac84;
+}
+
+body header .accountPopUp #logoutBtn {
+  background-color: #ff9f43;
+}
+
 body .wrapper {
-    position: relative;
-    top: 10vh;
+  position: relative;
+  top: 10vh;
 }
+
 body .wrapper .newArticle {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 4vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4vh;
 }
 body .wrapper .newArticle #standard {
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 }
 body .wrapper .newArticle #standard #articleTitle {
-    width: 20vw;
-    background-color: #C8D6E5;
-    border-radius: 5px;
+  width: 20vw;
+  background-color: #C8D6E5;
+  border-radius: 5px;
 }
 body .wrapper .newArticle #standard #articleText {
-    width: 60vw;
-    height: 20vh;
-    background-color: #C8D6E5;
-    border-radius: 10px;
+  width: 60vw;
+  height: 20vh;
+  background-color: #C8D6E5;
+  border-radius: 10px;
 }
 body .wrapper .newArticle #newSections {
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 }
 body .wrapper .newArticle #newSections #articleHeader {
-    width: 20vw;
-    background-color: #C8D6E5;
-    border-radius: 5px;
+  width: 20vw;
+  background-color: #C8D6E5;
+  border-radius: 5px;
 }
 body .wrapper .newArticle #newSections #articleSection {
-    width: 60vw;
-    height: 20vh;
-    background-color: #C8D6E5;
-    border-radius: 10px;
+  width: 60vw;
+  height: 20vh;
+  background-color: #C8D6E5;
+  border-radius: 10px;
 }
 body .wrapper .newArticle #buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 body .wrapper .newArticle #buttons button {
-    height: 3vh;
-    border: 0;
-    border-radius: 150px;
-    background-color: #54A0FF;
-    color: white;
-    font-weight: bold;
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
+  height: 3vh;
+  border: 0;
+  border-radius: 150px;
+  background-color: #54A0FF;
+  color: white;
+  font-weight: bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
 }
 body .wrapper .newArticle #buttons button:hover {
-    background-color: #6fc5ff;
-    box-shadow: 0 0 20px rgba(111, 197, 255, 0.3137254902);
-    transform: scale(1.1);
-    cursor: pointer;
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px rgba(111, 197, 255, 0.3137254902);
+  transform: scale(1.1);
+  cursor: pointer;
 }
 body .wrapper .newArticle #buttons button:active {
-    background-color: #3d94cf;
-    transition: all 0.25s;
-    -webkit-transition: all 0.25s;
-    box-shadow: none;
-    transform: scale(0.98);
-    cursor: pointer;
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=addArticle.css.map */

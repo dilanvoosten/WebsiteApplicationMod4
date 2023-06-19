@@ -80,8 +80,8 @@ body
       visibility: hidden
       z-index: 10
       position: fixed
-      top: 25vh
-      height: 50vh
+      top: 20vh
+      height: 60vh
       width: 20vw
       display: flex
       flex-direction: column
@@ -115,9 +115,16 @@ body
 
         .password
           width: 15vw
+          height: 15vh
           display: flex
-          flex-direction: row
-          justify-content: space-between
+          flex-direction: column
+          gap: 1vh
+
+        #submitUserPass
+          background-color: v.$submitBothButton
+
+      #logoutBtn
+        background-color: v.$logOutButton
 
   .wrapper
     position: relative

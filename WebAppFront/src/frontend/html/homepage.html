@@ -6,8 +6,8 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="../css/homepage.css">
     <link rel="icon" type="image/png" href="../../../resources/archive-logo.png">
-    <script src="https://kit.fontawesome.com/2a6128e7b4.js" crossorigin="anonymous"></script>
-    <script src="../javascript/homepage.js"></script>
+    <script defer src="https://kit.fontawesome.com/2a6128e7b4.js" crossorigin="anonymous"></script>
+    <script defer src="../javascript/homepage.js"></script>
 </head>
 <body>
 
@@ -34,9 +34,9 @@
         <button type="button" onclick="closeDialog()" id="closeDialog"><i class="fa-solid fa-xmark"></i></button>
 
         <p> Change your credentials here</p>
-        <form>
+        <form id="updateUserPass">
             <label for="updateUsername"> exampleUsername</label>
-            <!-- insert username from current session here-->
+            <!--TODO: insert username from current session here-->
             <div class="username">
                 <input type="text" id="updateUsername" name="updateUsername" placeholder="New Username...">
                 <button type="submit" id="submitUsername">Submit</button>
@@ -44,11 +44,13 @@
 
 
             <label for="updatePassword">*******</label>
-            <!-- insert '*' with length of password from current session here-->
+            <!--TODO: insert '*' with length of password from current session here-->
             <div class="password">
-                <input type="text" id="updatePassword" name="updatePassword" placeholder="New Password...">
+                <input type="password" id="updatePassword" name="updatePassword" placeholder="New Password...">
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password...">
                 <button type="submit" id="submitPassword">Submit</button>
             </div>
+
             <button type="submit" id="submitUserPass">Submit both</button>
         </form>
 
@@ -61,7 +63,6 @@
 <div class="wrapper">
     main page
 </div>
-
 
 
 </body>

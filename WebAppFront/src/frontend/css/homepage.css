@@ -78,8 +78,8 @@ body header .accountPopUp {
     visibility: hidden;
     z-index: 10;
     position: fixed;
-    top: 25vh;
-    height: 50vh;
+    top: 20vh;
+    height: 60vh;
     width: 20vw;
     display: flex;
     flex-direction: column;
@@ -105,18 +105,30 @@ body header .accountPopUp form {
     justify-content: space-evenly;
     align-items: center;
 }
+
 body header .accountPopUp form .username {
     width: 15vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 body header .accountPopUp form .password {
     width: 15vw;
+    height: 15vh;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 1vh;
 }
+
+body header .accountPopUp form #submitUserPass {
+    background-color: #10ac84;
+}
+
+body header .accountPopUp #logoutBtn {
+    background-color: #ff9f43;
+}
+
 body .wrapper {
     position: relative;
     top: 10vh;
