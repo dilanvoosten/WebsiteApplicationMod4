@@ -76,6 +76,7 @@ body header button:active {
 }
 body header .accountPopUp {
     visibility: hidden;
+    z-index: 10;
     position: fixed;
     top: 25vh;
     height: 50vh;
@@ -86,7 +87,7 @@ body header .accountPopUp {
     align-items: center;
     border: 0;
     border-radius: 20px;
-    background-color: rgba(46, 134, 222, 0.5215686275);
+    background-color: #2E86DE;
     color: white;
     padding: 0 0 1vh 0;
 }
