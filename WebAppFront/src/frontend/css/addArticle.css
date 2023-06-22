@@ -139,11 +139,13 @@ body .wrapper .newArticle #standard {
   flex-direction: column;
   gap: 2vh;
 }
-body .wrapper .newArticle #standard #articleTitle {
+
+body .wrapper .newArticle #standard input {
   width: 20vw;
   background-color: #C8D6E5;
   border-radius: 5px;
 }
+
 body .wrapper .newArticle #standard #articleText {
   width: 60vw;
   height: 20vh;

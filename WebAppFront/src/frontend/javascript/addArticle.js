@@ -53,7 +53,7 @@ document.getElementById("addSection").addEventListener("click", () => {
 // handle the data for making a new article
 let newArticle = document.getElementById("newArticle");
 
-newArticle.addEventListener("submit", (e) => {
+newArticle.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // standard input fields
@@ -73,18 +73,40 @@ newArticle.addEventListener("submit", (e) => {
             if (articleHeader.value === "" || articleSection.value === "") {
                 alert(`\n Invalid input for making a new article! \n Header and corresponding text have to be given.`);
             } else {
-                console.log(`Title: ${articleTitle.value} \n
-            Text: ${articleText.value} \n
-            Header: ${articleHeader.value} \n
-            Section text: ${articleSection.value}`);
+                // handle submitted data with extra section
+                try {
+                    const fd = new FormData(document.getElementById('newArticle'));
+                    const urlEncoded = new URLSearchParams(fd).toString();
+                    await fetch('http://localhost:3000/articles', {
+                        method: "POST",
+                        body: urlEncoded,
+                        headers: {
+                            'Content-type': 'application/x-www-form-urlencoded',
+                        }
+                    });
+                } catch (e) {
+                    console.error('Error while fetching new article with section(s)', e);
+                    throw e;
+                }
             }
         } else {
+            // handle submitted data without extra section
+            const fd = new FormData(document.getElementById('newArticle'));
+            const urlEncoded = new URLSearchParams(fd).toString();
+            await fetch('http://localhost:3000/articles', {
+                method: "POST",
+                body: urlEncoded,
+                headers: {
+                    'Content-type': 'application/x-www-form-urlencoded',
+                }
+            });
+
+
             // TODO: make this method useful for multiple extra sections
             // set values of uncreated sections to empty string
 
             // TODO: send data to backend
-            console.log(`Title: ${articleTitle.value} \n
-            Text: ${articleText.value}`);
+
         }
 
 
