@@ -10,7 +10,7 @@ loginForm.addEventListener("submit", async (e) => {
     if (username.value === "" || password.value === "") {
         alert(`\n Invalid username or password input! \n Please check if you filled in both fields.`)
     } else {
-        // TODO: send username and password to backend to get it checked
+        // if login is successful, redirect to homepage
         try {
             const fd = new FormData(document.querySelector('form'));
             const urlEncoded = new URLSearchParams(fd).toString();
@@ -20,11 +20,14 @@ loginForm.addEventListener("submit", async (e) => {
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded',
                 }
-            })
+            }).then((res) => {
+                if (res.redirected) {
+                    window.location = '../html/homepage.html';
+                }
+            });
         } catch (e) {
             console.error('Error while fetching login credentials', e);
             throw e;
         }
-
     }
 });

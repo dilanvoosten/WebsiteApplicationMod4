@@ -20,6 +20,10 @@ signUpForm.addEventListener("submit", async (e) => {
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded',
                 }
+            }).then((res) => {
+                if (res.redirected) {
+                    window.location = '../html/homepage.html';
+                }
             });
 
         } catch (e) {

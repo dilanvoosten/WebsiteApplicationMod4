@@ -10,7 +10,7 @@ function closeDialog() {
 function generateSection() {
     document.getElementById("newSections").innerHTML =
         `<label for="articleHeader"></label>
-        <input type="text" id="articleHeader" placeholder="Name your header here">
+        <input type="text" id="articleHeader" name="articleHeader" placeholder="Name your header here">
         <label for="articleSection"></label>
         <textarea  id="articleSection"  name="articleSection" placeholder="Write your text here"></textarea>`;
 }
@@ -62,54 +62,34 @@ newArticle.addEventListener("submit", async (e) => {
     // section input fields
     let articleHeader = document.getElementById("articleHeader");
     let articleSection = document.getElementById("articleSection");
+    // category input field
+    let category = document.getElementById("category");
 
     // check if title is left empty
-    if (articleTitle.value === "" || articleText.value === "") {
-        alert(`\n Invalid input for making a new article! \n Title and text have to be given`);
+    if (articleTitle.value === "" || articleText.value === "" || category.value === "") {
+        alert(`\n Invalid input for making a new article! \n Title, Text and Category have to be given`);
         // check if section has been added, if so, check if fields aren't left empty
     } else {
-        if (sectionAdded) {
-            // check for empty fields
-            if (articleHeader.value === "" || articleSection.value === "") {
-                alert(`\n Invalid input for making a new article! \n Header and corresponding text have to be given.`);
-            } else {
-                // handle submitted data with extra section
-                try {
-                    const fd = new FormData(document.getElementById('newArticle'));
-                    const urlEncoded = new URLSearchParams(fd).toString();
-                    await fetch('http://localhost:3000/articles', {
-                        method: "POST",
-                        body: urlEncoded,
-                        headers: {
-                            'Content-type': 'application/x-www-form-urlencoded',
-                        }
-                    });
-                } catch (e) {
-                    console.error('Error while fetching new article with section(s)', e);
-                    throw e;
-                }
+        // handle submitted data without extra section
+        const fd = new FormData(document.getElementById('newArticle'));
+        const urlEncoded = new URLSearchParams(fd).toString();
+        await fetch('http://localhost:3000/articles', {
+            method: "POST",
+            body: urlEncoded,
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded',
             }
-        } else {
-            // handle submitted data without extra section
-            const fd = new FormData(document.getElementById('newArticle'));
-            const urlEncoded = new URLSearchParams(fd).toString();
-            await fetch('http://localhost:3000/articles', {
-                method: "POST",
-                body: urlEncoded,
-                headers: {
-                    'Content-type': 'application/x-www-form-urlencoded',
-                }
-            });
+        });
 
 
-            // TODO: make this method useful for multiple extra sections
-            // set values of uncreated sections to empty string
+        // TODO: make this method useful for multiple extra sections
+        // set values of uncreated sections to empty string
 
-            // TODO: send data to backend
-
-        }
-
+        // TODO: send data to backend
 
     }
-
 });
+
+
+
+
