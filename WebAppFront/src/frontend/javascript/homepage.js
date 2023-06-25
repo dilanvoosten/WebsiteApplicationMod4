@@ -1,15 +1,48 @@
+async function showCategories() {
+    let dropContent = document.getElementById('drop-content');
+    const response = await fetch('http://localhost:3000/categories');
+    const data = await response.json();
+
+    for (const category of data) {
+        const option = document.createElement("a");
+        // option.value = category.category;
+        option.text = category.category;
+        option.href = '#';
+        option.style.color = '#C8D6E5';
+        option.style.textDecoration = 'underline';
+        dropContent.appendChild(option);
+    }
+
+    dropContent.style.display = 'flex';
+    dropContent.style.flexDirection = 'column';
+    dropContent.style.alignItems = 'flex-start';
+    dropContent.style.backgroundColor = '#2E86DE';
+    dropContent.style.top = '10vh';
+    dropContent.style.maxWidth = '10vw';
+    dropContent.style.boxShadow = '0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2)';
+    dropContent.style.zIndex = '20';
+
+}
+
+
 function showDialog() {
     document.getElementById("accountPopUp").style.visibility = "visible";
+    // TODO: get user of current session
+    // document.getElementById("usernameLabel").innerHTML = currentUser.username.value;
 }
 
 function closeDialog() {
     document.getElementById("accountPopUp").style.visibility = "hidden";
 }
 
+function goToAddArticle() {
+    window.location = '../html/addArticle.html';
+}
+
 // handle the data
 let changeCred = document.getElementById("updateUserPass");
 
-changeCred.addEventListener("submit", (e) => {
+changeCred.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     let newUsername = document.getElementById("updateUsername");
@@ -29,9 +62,25 @@ changeCred.addEventListener("submit", (e) => {
         // username can be left empty, so that has not been checked separately
     } else {
         // TODO: send changes to the backend
-        console.log(`Changes: \n
-         - Username: ${newUsername.value} \n
-         - Password: ${newPassword.value} :: ${confirmPassword.value}`);
+        try {
+            const fd = new FormData(document.querySelector('form'));
+            const urlEncoded = new URLSearchParams(fd).toString();
+            await fetch('http://localhost:3000/users/update', {
+                method: "POST",
+                body: urlEncoded,
+                headers: {
+                    'Content-type': 'application/x-www-form-urlencoded',
+                }
+            }).then((res) => {
+                if (res.redirected) {
+                    window.location = '../html/homepage.html';
+                }
+            });
+        } catch (e) {
+            console.error(`Error while fetching new credentials`, e);
+            throw e;
+        }
+
     }
 });
 

@@ -17,12 +17,31 @@ body
     justify-content: space-around
     align-items: center
 
-    .links
+    #dropdown
       height: 8vh
       width: 35vw
-      display: flex
-      align-items: center
-      background-color: v.$pageItemsBackground
+
+      .dropBtn
+        background-color: v.$signUpLink
+
+      .drop-content
+        display: none
+
+
+        a:hover
+          text-decoration: underline
+          background-color: v.$buttonHover
+
+    .dropdown:hover
+      .dropBtn
+        background-color: v.$buttonHover
+    //
+    //  .drop-content
+    //    display: block
+
+
+
+
 
     .logo
       height: 10vh

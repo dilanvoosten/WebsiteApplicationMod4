@@ -12,8 +12,9 @@
 <body>
 
 <header>
-    <div class="links">
-        Tags
+    <div id="dropdown">
+        <button class="dropBtn" onclick="showCategories()"><i class="fa-solid fa-bars"></i></button>
+        <div id="drop-content"></div>
     </div>
 
     <div class="logo">
@@ -26,6 +27,7 @@
         <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
     </div>
 
+    <button type="button" onclick="goToAddArticle()" class="toAddArticle">Create new article</button>
 
     <button type="button" onclick="showDialog()" class="accountBtn">Account</button>
 
@@ -35,7 +37,7 @@
 
         <p> Change your credentials here</p>
         <form id="updateUserPass">
-            <label for="updateUsername"> exampleUsername</label>
+            <label for="updateUsername" id="usernameLabel"></label>
             <!--TODO: insert username from current session here-->
             <div class="username">
                 <input type="text" id="updateUsername" name="updateUsername" placeholder="New Username...">

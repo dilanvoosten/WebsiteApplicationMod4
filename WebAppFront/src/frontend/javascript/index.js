@@ -1,3 +1,5 @@
+let currentUser;
+
 let loginForm = document.getElementById("loginForm");
 
 // add eventListener to loginForm
@@ -10,7 +12,7 @@ loginForm.addEventListener("submit", async (e) => {
     if (username.value === "" || password.value === "") {
         alert(`\n Invalid username or password input! \n Please check if you filled in both fields.`)
     } else {
-        // if login is successful, redirect to homepage
+        // if login is successful, redirect to homepage and save credentials
         try {
             const fd = new FormData(document.querySelector('form'));
             const urlEncoded = new URLSearchParams(fd).toString();
@@ -31,3 +33,4 @@ loginForm.addEventListener("submit", async (e) => {
         }
     }
 });
+
