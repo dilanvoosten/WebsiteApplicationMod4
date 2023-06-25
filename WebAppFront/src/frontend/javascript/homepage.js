@@ -27,8 +27,21 @@ async function showCategories() {
 
 function showDialog() {
     document.getElementById("accountPopUp").style.visibility = "visible";
-    // TODO: get user of current session
-    // document.getElementById("usernameLabel").innerHTML = currentUser.username.value;
+    fetch('http://localhost:3000/users/current')
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return res.json();
+        })
+        .then(jsonRes => {
+            document.getElementById('usernameLabel').textContent = jsonRes.username;
+        }).catch(e => {
+        console.error('Fetch error:', e)
+    })
+    // show current user on account information
+    // document.getElementById('usernameLabel').innerHTML = user.username;
+
 }
 
 function closeDialog() {
