@@ -6,7 +6,6 @@ function closeDialog() {
     document.getElementById("accountPopUp").style.visibility = "hidden";
 }
 
-// TODO create multiple sections, now it overrides the already created one
 function generateSection() {
     document.getElementById("newSections").innerHTML =
         `<label for="articleHeader"></label>
@@ -37,7 +36,6 @@ changeCred.addEventListener("submit", (e) => {
         alert(`\n Invalid input for password change! \n Inserted passwords are not the same.`);
         // username can be left empty, so that has not been checked separately
     } else {
-        // TODO: send changes to the backend
         console.log(`Changes: \n
          - Username: ${newUsername.value} \n
          - Password: ${newPassword.value} :: ${confirmPassword.value}`);
@@ -80,12 +78,6 @@ newArticle.addEventListener("submit", async (e) => {
                 'Content-type': 'application/x-www-form-urlencoded',
             }
         });
-
-
-        // TODO: make this method useful for multiple extra sections
-        // set values of uncreated sections to empty string
-
-        // TODO: send data to backend
 
     }
 });

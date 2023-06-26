@@ -1,5 +1,3 @@
-let currentUser;
-
 let loginForm = document.getElementById("loginForm");
 
 // add eventListener to loginForm
