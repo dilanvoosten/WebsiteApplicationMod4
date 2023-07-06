@@ -1,33 +1,25 @@
-let signUpForm = document.getElementById("signUpForm");
+const signupForm = document.getElementById('signUpForm');
 
-signUpForm.addEventListener("submit", async (e) => {
+signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const formData = new FormData(document.querySelector('form'));
+    const bodyData = JSON.stringify(Object.fromEntries(formData.entries()));
+    try {
 
-    let username = document.getElementById("username");
-    let password = document.getElementById("password");
-
-    // check if input fields are left empty
-    if (username.value === "" || password.value === "") {
-        alert(`\n Invalid username or password input! \n Please check if you filled in both fields`);
-    } else
-        // handle submitted data
-        try {
-            const fd = new FormData(document.querySelector('form'));
-            const urlEncoded = new URLSearchParams(fd).toString();
-            await fetch('http://localhost:3000/users', {
-                method: "POST",
-                body: urlEncoded,
-                headers: {
-                    'Content-type': 'application/x-www-form-urlencoded',
-                }
-            }).then((res) => {
-                if (res.redirected) {
-                    window.location = '../html/homepage.html';
-                }
-            });
-
-        } catch (e) {
-            console.error('Error while fetching new user', e);
-            throw e;
+        console.log(bodyData);
+        const res = await fetch('http://localhost:3000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: bodyData
+        });
+        if (res.redirected) {
+            window.location.href = "homepage.html";
         }
+        const data = await res.json();
+        console.log(data);
+    } catch (e) {
+        console.error('Something went wrong while sign up fetch', e);
+    }
 });
