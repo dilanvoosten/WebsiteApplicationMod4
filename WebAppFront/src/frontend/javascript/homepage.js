@@ -74,7 +74,6 @@ changeCred.addEventListener("submit", async (e) => {
         alert(`\n Invalid input for password change! \n Inserted passwords are not the same.`);
         // username can be left empty, so that has not been checked separately
     } else {
-        // TODO: send changes to the backend
         try {
             const fd = new FormData(document.querySelector('form'));
             const urlEncoded = new URLSearchParams(fd).toString();
