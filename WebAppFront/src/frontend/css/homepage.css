@@ -15,29 +15,23 @@ body header {
   justify-content: space-around;
   align-items: center;
 }
-
 body header #dropdown {
   height: 8vh;
   width: 35vw;
 }
-
 body header #dropdown .dropBtn {
   background-color: #54A0FF;
 }
-
 body header #dropdown .drop-content {
   display: none;
 }
-
 body header #dropdown .drop-content a:hover {
   text-decoration: underline;
   background-color: #6fc5ff;
 }
-
 body header .dropdown:hover .dropBtn {
   background-color: #6fc5ff;
 }
-
 body header .logo {
   height: 10vh;
   width: 15.625vw;
@@ -46,7 +40,6 @@ body header .logo {
   justify-content: center;
   background-color: #C8D6E5;
 }
-
 body header .logo img {
   height: 10.5vh;
   width: 15.625vw;
