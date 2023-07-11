@@ -96,6 +96,25 @@ changeCred.addEventListener("submit", async (e) => {
     }
 });
 
+// get the list of all articles
+async function showAllArticles() {
+    let articleList = document.querySelector('ul');
+    const response = await fetch('http://localhost:3000/articles');
+    const data = await response.json();
+
+    for (const article of data) {
+        const listItem = document.createElement("li");
+        listItem.textContent = article.title;
+        articleList.appendChild(listItem);
+    }
+
+    // style the list
+    articleList.style.display = 'flex';
+    articleList.style.flexDirection = 'column';
+}
+
+
+
 
 
 
