@@ -104,13 +104,22 @@ async function showAllArticles() {
 
     for (const article of data) {
         const listItem = document.createElement("li");
+        // content of the list item
         listItem.textContent = article.title;
+        // make each item clickable
+        listItem.addEventListener('click', () => {
+            showArticleOnTitle(article.title);
+        })
         articleList.appendChild(listItem);
     }
 
     // style the list
     articleList.style.display = 'flex';
     articleList.style.flexDirection = 'column';
+}
+
+async function showArticleOnTitle(title) {
+    console.log(`The clicked article has title ${title}`);
 }
 
 
