@@ -5,8 +5,6 @@ signupForm.addEventListener('submit', async (e) => {
     const formData = new FormData(document.querySelector('form'));
     const bodyData = JSON.stringify(Object.fromEntries(formData.entries()));
     try {
-
-        console.log(bodyData);
         const res = await fetch('http://localhost:3000/users', {
             method: 'POST',
             headers: {
