@@ -1,4 +1,5 @@
 let loginForm = document.getElementById("loginForm");
+let errorField = document.getElementById("errorMessage");
 
 // add eventListener to loginForm
 loginForm.addEventListener('submit', async (e) => {
@@ -25,6 +26,8 @@ loginForm.addEventListener('submit', async (e) => {
             });
             if (res.redirected) {
                 window.location.href = '../html/homepage.html';
+            } else {
+                errorField.textContent = await res.json();
             }
         } catch (err) {
             console.error('Something went wrong while sending user credentials', err);
