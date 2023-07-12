@@ -1,33 +1,33 @@
 let loginForm = document.getElementById("loginForm");
 
 // add eventListener to loginForm
-loginForm.addEventListener("submit", async (e) => {
+loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const formData = new FormData(document.querySelector('form'));
+    const bodyData = JSON.stringify(Object.fromEntries(formData.entries()));
+    console.log(bodyData);
+
+    // check form input
     let username = document.getElementById("username");
     let password = document.getElementById("password");
-
     if (username.value === "" || password.value === "") {
         alert(`\n Invalid username or password input! \n Please check if you filled in both fields.`)
     } else {
         // if login is successful, redirect to homepage and save credentials
         try {
-            const fd = new FormData(document.querySelector('form'));
-            const urlEncoded = new URLSearchParams(fd).toString();
-            await fetch('http://localhost:3000/', {
-                method: "POST",
-                body: urlEncoded,
+            const res = await fetch('http://localhost:3000/', {
+                method: 'POST',
                 headers: {
-                    'Content-type': 'application/x-www-form-urlencoded',
-                }
-            }).then((res) => {
-                if (res.redirected) {
-                    window.location = '../html/homepage.html';
-                }
+                    'Content-Type': 'application/json'
+                },
+                body: bodyData
             });
-        } catch (e) {
-            console.error('Error while fetching login credentials', e);
-            throw e;
+            if (res.redirected) {
+                window.location.href = '../html/homepage.html';
+            }
+        } catch (err) {
+            console.error('Something went wrong while sending user credentials', err);
         }
     }
 });

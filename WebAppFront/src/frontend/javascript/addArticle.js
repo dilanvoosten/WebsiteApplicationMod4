@@ -56,7 +56,7 @@ newArticle.addEventListener("submit", async (e) => {
             },
             body: bodyData
         });
-        // catch the errors from the backend
+        // catch the responses from the backend
         switch (res.status) {
             case 200 :
                 console.log(res.json());
