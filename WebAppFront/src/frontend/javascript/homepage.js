@@ -1,3 +1,12 @@
+// variables for this module
+// article parent
+let article = document.createElement('article');
+// article list parent
+let articleList = document.createElement('ul');
+// container of the main text of the webpage
+const main = document.querySelector('.wrapper');
+
+
 async function showCategories() {
     let dropContent = document.getElementById('drop-content');
     const response = await fetch('http://localhost:3000/categories');
@@ -98,7 +107,6 @@ changeCred.addEventListener("submit", async (e) => {
 
 // get the list of all articles
 async function showAllArticles() {
-    let articleList = document.querySelector('ul');
     const response = await fetch('http://localhost:3000/articles');
     const data = await response.json();
 
@@ -112,14 +120,56 @@ async function showAllArticles() {
         })
         articleList.appendChild(listItem);
     }
-
     // style the list
     articleList.style.display = 'flex';
     articleList.style.flexDirection = 'column';
+
+    // remove existing element from the container if there are any
+    if (main.hasChildNodes()) {
+        main.removeChild(article);
+        main.appendChild(articleList);
+    } else {
+        main.appendChild(articleList);
+    }
 }
 
 async function showArticleOnTitle(title) {
-    console.log(`The clicked article has title ${title}`);
+    // get the specific article which has been clicked on
+    const response = await fetch(`http://localhost:3000/articles/${title}`);
+    const articleData = await response.json();
+
+    console.log(articleData);
+    console.log(`${articleData.title} : 
+    ${articleData.article_text} : 
+    ${articleData.category} : 
+    ${articleData.writer}`);
+
+    // create article title from response
+    let articleTitle = document.createElement('h1');
+    articleTitle.textContent = articleData.title;
+
+    // create article text from response
+    let articleText = document.createElement('p');
+    articleText.textContent = articleData.article_text;
+
+    // add children to the parent element
+    article.appendChild(articleTitle);
+    article.appendChild(articleText);
+
+    // styling the article
+    article.style.display = 'flex';
+    article.style.flexDirection = 'column';
+    article.style.gap = '2vh';
+
+
+    // remove existing element from the container if there are any
+    if (main.hasChildNodes()) {
+        main.removeChild(articleList);
+        main.appendChild(article);
+    } else {
+        main.appendChild(article);
+    }
+
 }
 
 
