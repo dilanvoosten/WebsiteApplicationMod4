@@ -3,12 +3,18 @@
 let article = document.createElement('article');
 // article list parent
 let articleList = document.createElement('ul');
+// category articles list parent
+let categoryArticlesList = document.createElement('ul');
+// category list
+let categoryList = document.querySelector('#drop-content');
 // container of the main text of the webpage
 const main = document.querySelector('.wrapper');
 
+// basic styling of main
+main.style.color = '#D9D9D9';
+
 
 async function showCategories() {
-    let dropContent = document.getElementById('drop-content');
     const response = await fetch('http://localhost:3000/categories');
     const data = await response.json();
 
@@ -16,20 +22,26 @@ async function showCategories() {
         const option = document.createElement("a");
         // option.value = category.category;
         option.text = category.category;
-        option.href = '#';
+        // make each item clickable
+        option.addEventListener('click', () => {
+            showArticlesOfCategory(category.category);
+        })
+        // option styling
+        option.style.cursor = 'pointer';
         option.style.color = '#C8D6E5';
         option.style.textDecoration = 'underline';
-        dropContent.appendChild(option);
+        categoryList.appendChild(option);
     }
 
-    dropContent.style.display = 'flex';
-    dropContent.style.flexDirection = 'column';
-    dropContent.style.alignItems = 'flex-start';
-    dropContent.style.backgroundColor = '#2E86DE';
-    dropContent.style.top = '10vh';
-    dropContent.style.maxWidth = '10vw';
-    dropContent.style.boxShadow = '0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2)';
-    dropContent.style.zIndex = '20';
+    // styling the list of categories
+    categoryList.style.display = 'flex';
+    categoryList.style.flexDirection = 'column';
+    categoryList.style.alignItems = 'flex-start';
+    categoryList.style.backgroundColor = '#2E86DE';
+    categoryList.style.top = '10vh';
+    categoryList.style.maxWidth = '10vw';
+    categoryList.style.boxShadow = '0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2)';
+    categoryList.style.zIndex = '20';
 
 }
 
@@ -118,6 +130,9 @@ async function showAllArticles() {
         listItem.addEventListener('click', () => {
             showArticleOnTitle(article.title);
         })
+        // styling of list item
+        listItem.style.cursor = 'pointer';
+
         articleList.appendChild(listItem);
     }
     // style the list
@@ -164,12 +179,54 @@ async function showArticleOnTitle(title) {
 
     // remove existing element from the container if there are any
     if (main.hasChildNodes()) {
-        main.removeChild(articleList);
+        while (main.firstChild) {
+            main.removeChild(main.firstChild);
+        }
         main.appendChild(article);
     } else {
         main.appendChild(article);
     }
 
+}
+
+async function showArticlesOfCategory(category) {
+    const response = await fetch(`http://localhost:3000/articles/categories/${category}`);
+    const data = await response.json();
+
+    console.log(data);
+
+    if (data.length === 0) {
+        main.textContent = `Category: "${category}" does not have any articles!`;
+    } else {
+        // TODO: give message if no articles are found by given category
+
+        for (const article of data) {
+            const listItem = document.createElement('li');
+            // content of the list item
+            listItem.textContent = article.title;
+            // make each item clickable
+            listItem.addEventListener('click', () => {
+                showArticleOnTitle(article.title);
+            });
+            // styling of the list item
+            listItem.style.cursor = 'pointer';
+
+            categoryArticlesList.appendChild(listItem);
+        }
+        // style the list
+        categoryArticlesList.style.display = 'flex';
+        categoryArticlesList.style.flexDirection = 'column';
+
+        // remove existing element from the container if there are any
+        if (main.hasChildNodes()) {
+            while (main.firstChild) {
+                main.removeChild(main.firstChild);
+            }
+            main.appendChild(categoryArticlesList);
+        } else {
+            main.appendChild(categoryArticlesList);
+        }
+    }
 }
 
 
