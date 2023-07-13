@@ -10,6 +10,8 @@ let categoryList = document.querySelector('#drop-content');
 // container of the main text of the webpage
 const main = document.querySelector('.wrapper');
 
+let errorField = document.getElementById("errorMessage");
+
 // basic styling of main
 main.style.color = '#D9D9D9';
 
@@ -68,12 +70,13 @@ function goToAddArticle() {
     window.location = '../html/addArticle.html';
 }
 
-// handle the data
+// handle the change credentials data
 let changeCred = document.getElementById("updateUserPass");
 
 changeCred.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // check form input
     let newUsername = document.getElementById("updateUsername");
     let newPassword = document.getElementById("updatePassword");
     let confirmPassword = document.getElementById("confirmPassword");
@@ -90,20 +93,35 @@ changeCred.addEventListener("submit", async (e) => {
         alert(`\n Invalid input for password change! \n Inserted passwords are not the same.`);
         // username can be left empty, so that has not been checked separately
     } else {
+        // update the credentials of updateTest
         try {
-            const fd = new FormData(document.querySelector('form'));
-            const urlEncoded = new URLSearchParams(fd).toString();
-            await fetch('http://localhost:3000/users/update', {
-                method: "POST",
-                body: urlEncoded,
+            const formData = new FormData(document.querySelector('#updateUserPass'));
+            const bodyData = JSON.stringify(Object.fromEntries(formData.entries()));
+            console.log(bodyData);
+            const res = await fetch('http://localhost:3000/users/updateTest', {
+                method: 'PUT',
                 headers: {
-                    'Content-type': 'application/x-www-form-urlencoded',
-                }
-            }).then((res) => {
-                if (res.redirected) {
-                    window.location = '../html/homepage.html';
-                }
+                    'Content-Type': 'application/json'
+                },
+                body: bodyData
             });
+            // catch the responses from the backend
+            switch (res.status) {
+                case 200:
+                    errorField.style.color = '#1dd1a1';
+                    errorField.textContent = await res.json();
+                    break;
+                case 400:
+                    errorField.style.color = '#ff6b6b';
+                    errorField.textContent = await res.json();
+                    break;
+                case 404:
+                    errorField.style.color = '#ff6b6b';
+                    errorField.textContent = await res.json();
+                    break;
+                default:
+                    console.log(`No error from backend/database, or status is ${res.status}`);
+            }
         } catch (e) {
             console.error(`Error while fetching new credentials`, e);
             throw e;
@@ -117,29 +135,34 @@ async function showAllArticles() {
     const response = await fetch('http://localhost:3000/articles');
     const data = await response.json();
 
-    for (const article of data) {
-        const listItem = document.createElement("li");
-        // content of the list item
-        listItem.textContent = article.title;
-        // make each item clickable
-        listItem.addEventListener('click', () => {
-            showArticleOnTitle(article.title);
-        })
-        // styling of list item
-        listItem.style.cursor = 'pointer';
+    if (response.status === 200) {
+        for (const article of data) {
+            const listItem = document.createElement("li");
+            // content of the list item
+            listItem.textContent = article.title;
+            // make each item clickable
+            listItem.addEventListener('click', () => {
+                showArticleOnTitle(article.title);
+            })
+            // styling of list item
+            listItem.style.cursor = 'pointer';
 
-        articleList.appendChild(listItem);
-    }
-    // style the list
-    articleList.style.display = 'flex';
-    articleList.style.flexDirection = 'column';
+            articleList.appendChild(listItem);
+        }
+        // style the list
+        articleList.style.display = 'flex';
+        articleList.style.flexDirection = 'column';
 
-    // remove existing element from the container if there are any
-    if (main.hasChildNodes()) {
-        main.removeChild(article);
-        main.appendChild(articleList);
+        // remove existing element from the container if there are any
+        if (main.hasChildNodes()) {
+            main.removeChild(article);
+            main.appendChild(articleList);
+        } else {
+            main.appendChild(articleList);
+        }
     } else {
-        main.appendChild(articleList);
+        main.style.color = '#ff6b6b';
+        main.textContent = data;
     }
 }
 
@@ -147,12 +170,6 @@ async function showArticleOnTitle(title) {
     // get the specific article which has been clicked on
     const response = await fetch(`http://localhost:3000/articles/${title}`);
     const articleData = await response.json();
-
-    console.log(articleData);
-    console.log(`${articleData.title} : 
-    ${articleData.article_text} : 
-    ${articleData.category} : 
-    ${articleData.writer}`);
 
     // create article title from response
     let articleTitle = document.createElement('h1');

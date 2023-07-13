@@ -10,6 +10,7 @@ signupForm.addEventListener('submit', async (e) => {
     if (username.value === "" || password.value === "") {
         alert(`\n Invalid username or password input! \n Please check if you filled in both fields.`);
     } else {
+        // create new user
         const formData = new FormData(document.querySelector('form'));
         const bodyData = JSON.stringify(Object.fromEntries(formData.entries()));
         try {
