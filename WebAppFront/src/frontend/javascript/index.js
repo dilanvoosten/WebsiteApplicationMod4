@@ -1,3 +1,5 @@
+export let currentUser;
+
 let loginForm = document.getElementById("loginForm");
 let errorField = document.getElementById("errorMessage");
 
@@ -13,7 +15,6 @@ loginForm.addEventListener('submit', async (e) => {
     } else {
         const formData = new FormData(document.querySelector('form'));
         const bodyData = JSON.stringify(Object.fromEntries(formData.entries()));
-        console.log(bodyData);
         // if login is successful, redirect to homepage and save credentials
         try {
             const res = await fetch('http://localhost:3000/', {
@@ -23,9 +24,11 @@ loginForm.addEventListener('submit', async (e) => {
                 },
                 body: bodyData
             });
-            // if redirected from backend, redirect page on frontend
-            if (res.redirected) {
+            // if redirected from backend, redirect page on frontend and save user credentials in session
+            if (res.status === 200) {
                 window.location.href = '../html/homepage.html';
+                currentUser = await res.json();
+                console.log(currentUser);
             } else { // otherwise show error message
                 errorField.textContent = await res.json();
             }
@@ -35,3 +38,4 @@ loginForm.addEventListener('submit', async (e) => {
     }
 });
 
+// export default currentUser;
