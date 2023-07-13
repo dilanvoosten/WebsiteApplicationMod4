@@ -50,7 +50,6 @@ body .wrapper .login .loginForm button:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
-
 body .wrapper .login .loginForm button:active {
   background-color: #3d94cf;
   transition: all 0.25s;
@@ -62,6 +61,25 @@ body .wrapper .login .loginForm button:active {
 
 body .wrapper .login #errorMessage {
   color: #ff6b6b;
+}
+
+@media screen and (max-width: 700px) {
+  input {
+    width: 95%;
+  }
+
+  .loginForm {
+    width: 95%;
+    height: 95%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .button {
+    width: 95%;
+    transition: none;
+    -webkit-transition: none;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
