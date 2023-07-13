@@ -115,14 +115,30 @@ body header .accountPopUp form .password {
   gap: 1vh;
 }
 body header .accountPopUp form #submitUserPass {
-  background-color: #10ac84;
+    background-color: #10ac84;
 }
+
 body header .accountPopUp #logoutBtn {
-  background-color: #ff9f43;
+    background-color: #ff9f43;
 }
+
 body .wrapper {
-  position: relative;
-  top: 10vh;
+    position: relative;
+    top: 10vh;
+}
+
+@media screen and (max-width: 1400px) {
+    form {
+        height: 45vh;
+    }
+
+    form .username {
+        flex-direction: column;
+    }
+
+    form input {
+        width: 95%;
+    }
 }
 
 /*# sourceMappingURL=homepage.css.map */

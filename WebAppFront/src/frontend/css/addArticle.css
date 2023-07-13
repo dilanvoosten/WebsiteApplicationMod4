@@ -15,14 +15,12 @@ body header {
   justify-content: space-around;
   align-items: center;
 }
-
 body header .headerSpacing {
   height: 8vh;
   width: auto;
   display: flex;
   align-items: center;
 }
-
 body header .logo {
   height: 10vh;
   width: 15.625vw;
@@ -183,8 +181,23 @@ body .wrapper .newArticle #buttons button:active {
   transform: scale(0.98);
   cursor: pointer;
 }
+
 body .wrapper #errorMessage {
   color: #ff6b6b;
+}
+
+@media screen and (max-width: 1400px) {
+  form {
+    height: 45vh;
+  }
+
+  form .username {
+    flex-direction: column;
+  }
+
+  form input {
+    width: 95%;
+  }
 }
 
 /*# sourceMappingURL=addArticle.css.map */
