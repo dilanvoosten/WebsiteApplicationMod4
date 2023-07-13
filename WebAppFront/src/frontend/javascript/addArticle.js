@@ -1,3 +1,5 @@
+let errorField = document.getElementById("errorMessage");
+
 function showDialog() {
     document.getElementById("accountPopUp").style.visibility = "visible";
 }
@@ -40,38 +42,50 @@ let newArticle = document.getElementById("newArticle");
 
 newArticle.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const formData = new FormData(document.querySelector('#newArticle'));
 
-    // TODO: get current user in session for the writer
-    // give dummy writer as parameter
-    formData.append('writer', 'testdilan');
+    // check form input
+    let title = document.getElementById("articleTitle");
+    let articleText = document.getElementById("articleText");
+    let category = document.getElementById("category");
+    if (title.value === "" || articleText.value === "" || category.value === "") {
+        alert(`\n Invalid title, text or category input! \n Please check if you filled in all fields.`);
+    } else {
+        const formData = new FormData(document.querySelector('#newArticle'));
+        // TODO: get current user in session for the writer
+        // give dummy writer as parameter
+        formData.append('writer', 'testdilan');
 
-    let bodyData = JSON.stringify(Object.fromEntries(formData.entries()));
-    console.log(bodyData);
-    try {
-        const res = await fetch('http://localhost:3000/articles', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: bodyData
-        });
-        // catch the responses from the backend
-        switch (res.status) {
-            case 200 :
-                console.log(res.json());
-                break;
-            case 400 :
-                console.log(res.json());
-                break;
-            case 403 :
-                console.log(res.json());
-                break;
-            default :
-                console.log(`No error from database/backend, or status is ${res.status}`);
+        let bodyData = JSON.stringify(Object.fromEntries(formData.entries()));
+        console.log(bodyData);
+        try {
+            const res = await fetch('http://localhost:3000/articles', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: bodyData
+            });
+            // catch the responses from the backend
+            switch (res.status) {
+                case 200 :
+                    errorField.style.color = '#1dd1a1';
+                    errorField.textContent = await res.json();
+                    console.log(res.json());
+                    break;
+                case 400 :
+                    errorField.textContent = await res.json();
+                    console.log(res.json());
+                    break;
+                case 403 :
+                    errorField.textContent = await res.json();
+                    console.log(res.json());
+                    break;
+                default :
+                    console.log(`No error from database/backend, or status is ${res.status}`);
+            }
+        } catch (err) {
+            console.error('Something went wrong while adding article fetch', err);
         }
-    } catch (err) {
-        console.error('Something went wrong while adding article fetch', err);
     }
 });
 

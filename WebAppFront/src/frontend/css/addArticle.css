@@ -197,4 +197,8 @@ body .wrapper .newArticle #buttons button:active {
   cursor: pointer;
 }
 
+body .wrapper #errorMessage {
+  color: #ff6b6b;
+}
+
 /*# sourceMappingURL=addArticle.css.map */
