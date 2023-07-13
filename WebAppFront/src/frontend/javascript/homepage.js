@@ -210,8 +210,6 @@ async function showArticlesOfCategory(category) {
     if (data.length === 0) {
         main.textContent = `Category: "${category}" does not have any articles!`;
     } else {
-        // TODO: give message if no articles are found by given category
-
         for (const article of data) {
             const listItem = document.createElement('li');
             // content of the list item
@@ -241,6 +239,7 @@ async function showArticlesOfCategory(category) {
     }
 }
 
+// function that returns String with the amount of stars based of the length of a word
 function printStars(word) {
     let result = "";
     for (let i = 0; i < word.length; i++) {

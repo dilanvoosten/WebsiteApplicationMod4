@@ -1,7 +1,17 @@
 let errorField = document.getElementById("errorMessage");
 
-function showDialog() {
+async function showDialog() {
     document.getElementById("accountPopUp").style.visibility = "visible";
+    /**
+     * For now using a testing user with username updateTest
+     * This will show that the functionality works, even though without
+     * the current logged-in user
+     */
+    const response = await fetch('http://localhost:3000/users/updateTest');
+    const user = await response.json();
+
+    document.getElementById("usernameLabel").textContent = user.username;
+    document.getElementById("passwordLabel").textContent = printStars(user.password);
 }
 
 function closeDialog() {
@@ -122,6 +132,13 @@ newArticle.addEventListener("submit", async (e) => {
     }
 });
 
-
+// function that returns String with the amount of stars based of the length of a word
+function printStars(word) {
+    let result = "";
+    for (let i = 0; i < word.length; i++) {
+        result += "*";
+    }
+    return result;
+}
 
 
