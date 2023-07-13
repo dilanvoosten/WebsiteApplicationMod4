@@ -19,7 +19,7 @@ body .wrapper .signUp {
   align-items: center;
   border-radius: 20px;
   width: 25vw;
-  height: 55.5vh;
+  height: 60vh;
 }
 body .wrapper .signUp .welcomeText {
   align-self: center;
@@ -45,18 +45,24 @@ body .wrapper .signUp .signUpForm button {
   -webkit-transition: all 0.5s;
 }
 body .wrapper .signUp .signUpForm button:hover {
-    background-color: #6fc5ff;
-    box-shadow: 0 0 20px rgba(111, 197, 255, 0.3137254902);
-    transform: scale(1.1);
-    cursor: pointer;
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px rgba(111, 197, 255, 0.3137254902);
+  transform: scale(1.1);
+  cursor: pointer;
 }
+
 body .wrapper .signUp .signUpForm button:active {
-    background-color: #3d94cf;
-    transition: all 0.25s;
-    -webkit-transition: all 0.25s;
-    box-shadow: none;
-    transform: scale(0.98);
-    cursor: pointer;
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+  cursor: pointer;
+}
+
+body .wrapper .signUp #errorMessage {
+  color: #ff6b6b;
+  height: 1rem;
 }
 
 /*# sourceMappingURL=signUp.css.map */
